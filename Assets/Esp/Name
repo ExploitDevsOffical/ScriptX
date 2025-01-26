@@ -1,3 +1,5 @@
+--By ByteR1ft
+
 local c = workspace.CurrentCamera
 	local ps = game:GetService("Players")
 	local lp = ps.LocalPlayer
