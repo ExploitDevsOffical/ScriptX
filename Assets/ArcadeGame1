@@ -17,7 +17,7 @@ G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 -- StarterGui.ScreenGui.Arcade
 G2L["2"] = Instance.new("Frame", G2L["1"]);
-G2L["2"]["Visible"] = true;
+G2L["2"].Visible = true
 G2L["2"]["BorderSizePixel"] = 0;
 G2L["2"]["BackgroundColor3"] = Color3.fromRGB(31, 84, 23);
 G2L["2"]["Size"] = UDim2.new(0, 298, 0, 297);
