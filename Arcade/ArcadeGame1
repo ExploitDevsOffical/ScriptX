@@ -1,0 +1,361 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+]=]
+
+-- Instances: 22 | Scripts: 3 | Modules: 0 | Tags: 0
+local G2L = {};
+
+-- StarterGui.ScreenGui
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- StarterGui.ScreenGui.Arcade
+G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["2"]["Visible"] = false;
+G2L["2"]["BorderSizePixel"] = 0;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(31, 84, 23);
+G2L["2"]["Size"] = UDim2.new(0, 298, 0, 297);
+G2L["2"]["Position"] = UDim2.new(0.10703, 0, 0.27513, 0);
+G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Name"] = [[Arcade]];
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton
+G2L["3"] = Instance.new("TextButton", G2L["2"]);
+G2L["3"]["BorderSizePixel"] = 0;
+G2L["3"]["TextSize"] = 19;
+G2L["3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3"]["BackgroundColor3"] = Color3.fromRGB(0, 86, 0);
+G2L["3"]["FontFace"] = Font.new([[rbxasset://fonts/families/PressStart2P.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["3"]["Size"] = UDim2.new(0, 69, 0, 29);
+G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3"]["Text"] = [[Start!]];
+G2L["3"]["Position"] = UDim2.new(0.38255, 0, 0.39731, 0);
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton.LocalScript
+G2L["4"] = Instance.new("LocalScript", G2L["3"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton.UICorner
+G2L["5"] = Instance.new("UICorner", G2L["3"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton.Cartoon Chomp
+G2L["6"] = Instance.new("Sound", G2L["3"]);
+G2L["6"]["Name"] = [[Cartoon Chomp]];
+G2L["6"]["SoundId"] = [[rbxassetid://430285057]];
+
+
+-- StarterGui.ScreenGui.Arcade.ground
+G2L["7"] = Instance.new("Frame", G2L["2"]);
+G2L["7"]["BorderSizePixel"] = 0;
+G2L["7"]["BackgroundColor3"] = Color3.fromRGB(86, 255, 128);
+G2L["7"]["Size"] = UDim2.new(0, 298, 0, 18);
+G2L["7"]["Position"] = UDim2.new(0, 0, 0.93939, 0);
+G2L["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["7"]["Name"] = [[ground]];
+
+
+-- StarterGui.ScreenGui.Arcade.ground.UICorner
+G2L["8"] = Instance.new("UICorner", G2L["7"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.UICorner
+G2L["9"] = Instance.new("UICorner", G2L["2"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.enemy
+G2L["a"] = Instance.new("Frame", G2L["2"]);
+G2L["a"]["Visible"] = false;
+G2L["a"]["BorderSizePixel"] = 0;
+G2L["a"]["BackgroundColor3"] = Color3.fromRGB(86, 255, 0);
+G2L["a"]["Size"] = UDim2.new(0, 18, 0, 19);
+G2L["a"]["Position"] = UDim2.new(0.08725, 0, 0.04714, 0);
+G2L["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["a"]["Name"] = [[enemy]];
+
+
+-- StarterGui.ScreenGui.Arcade.enemy.UICorner
+G2L["b"] = Instance.new("UICorner", G2L["a"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.label
+G2L["c"] = Instance.new("TextLabel", G2L["2"]);
+G2L["c"]["BorderSizePixel"] = 0;
+G2L["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["c"]["TextSize"] = 21;
+G2L["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/PressStart2P.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["c"]["TextColor3"] = Color3.fromRGB(0, 255, 0);
+G2L["c"]["BackgroundTransparency"] = 1;
+G2L["c"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["c"]["Text"] = [[Press Start]];
+G2L["c"]["Name"] = [[label]];
+G2L["c"]["Position"] = UDim2.new(0.16107, 0, -0.00673, 0);
+
+
+-- StarterGui.ScreenGui.Arcade.lilguy
+G2L["d"] = Instance.new("Frame", G2L["2"]);
+G2L["d"]["BorderSizePixel"] = 0;
+G2L["d"]["BackgroundColor3"] = Color3.fromRGB(60, 177, 0);
+G2L["d"]["Size"] = UDim2.new(0, 37, 0, 27);
+G2L["d"]["Position"] = UDim2.new(0.05789, 0, 0.79798, 0);
+G2L["d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d"]["Name"] = [[lilguy]];
+
+
+-- StarterGui.ScreenGui.Arcade.lilguy.TextLabel
+G2L["e"] = Instance.new("TextLabel", G2L["d"]);
+G2L["e"]["BorderSizePixel"] = 0;
+G2L["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e"]["TextSize"] = 27;
+G2L["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["e"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e"]["BackgroundTransparency"] = 1;
+G2L["e"]["Size"] = UDim2.new(0, 24, 0, 42);
+G2L["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e"]["Text"] = [[:3]];
+G2L["e"]["Rotation"] = 90;
+G2L["e"]["Position"] = UDim2.new(0.16216, 0, -0.2963, 0);
+
+
+-- StarterGui.ScreenGui.Arcade.lilguy.UICorner
+G2L["f"] = Instance.new("UICorner", G2L["d"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.lilguy.UIStroke
+G2L["10"] = Instance.new("UIStroke", G2L["d"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.lilguy.lilguy
+G2L["11"] = Instance.new("Frame", G2L["d"]);
+G2L["11"]["BorderSizePixel"] = 0;
+G2L["11"]["BackgroundColor3"] = Color3.fromRGB(60, 177, 0);
+G2L["11"]["Size"] = UDim2.new(0, 23, 0, 23);
+G2L["11"]["Position"] = UDim2.new(0.16216, 0, 0.69845, 0);
+G2L["11"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11"]["Name"] = [[lilguy]];
+
+
+-- StarterGui.ScreenGui.Arcade.lilguy.lilguy.UICorner
+G2L["12"] = Instance.new("UICorner", G2L["11"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton
+G2L["13"] = Instance.new("TextButton", G2L["2"]);
+G2L["13"]["BorderSizePixel"] = 0;
+G2L["13"]["TextSize"] = 14;
+G2L["13"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["13"]["BackgroundColor3"] = Color3.fromRGB(31, 84, 23);
+G2L["13"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["13"]["Size"] = UDim2.new(0, 38, 0, 35);
+G2L["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["13"]["Text"] = [[X]];
+G2L["13"]["Position"] = UDim2.new(0.02685, 0, 0.04377, 0);
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton.UICorner
+G2L["14"] = Instance.new("UICorner", G2L["13"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton.LocalScript
+G2L["15"] = Instance.new("LocalScript", G2L["13"]);
+
+
+
+-- StarterGui.ScreenGui.LocalScript
+G2L["16"] = Instance.new("LocalScript", G2L["1"]);
+
+
+
+-- StarterGui.ScreenGui.Arcade.TextButton.LocalScript
+local function C_4()
+local script = G2L["4"];
+	local gameBackground = script.Parent.Parent -- GameBG
+	local enemyTemplate = gameBackground:WaitForChild("enemy") -- Template for enemies
+	local ground = gameBackground:WaitForChild("ground") -- Ground part
+	local lilguy = gameBackground:WaitForChild("lilguy") -- Lilguy
+	local scoreLabel = gameBackground:WaitForChild("label") -- Score label
+	local button = script.Parent
+	
+	local spawnInterval = 1 -- Interval in seconds for spawning enemies
+	local fallSpeed = 300 -- Speed of the enemy's downward movement
+	local moveSpeed = 2 -- Lilguy movement speed
+	local rotationSpeed = 10 -- Rotation speed for lilguy
+	local score = 0 -- Player's score
+	local isFrozen = true -- Game is frozen initially
+	local isGameOver = false -- Game over flag
+	local sound = script.Parent["Cartoon Chomp"]
+	local player = game.Players.LocalPlayer
+	
+	local userInput = game:GetService("UserInputService")
+	local keys = {A = false, D = false} -- Track key states
+	
+	-- Function to spawn enemies
+	local function spawnEnemy()
+		local newEnemy = enemyTemplate:Clone()
+		newEnemy.Parent = gameBackground
+		newEnemy.Position = UDim2.new(math.random(0, 90) / 100, 0, 0, 0) -- Spawn within horizontal bounds
+		newEnemy.Visible = true -- Make the enemy visible
+	
+		-- Drop the enemy over time
+		spawn(function()
+			while newEnemy.Parent == gameBackground and not isGameOver do
+				-- Move the enemy downward
+				newEnemy.Position = UDim2.new(newEnemy.Position.X.Scale, 0, newEnemy.Position.Y.Scale + (fallSpeed * 0.01 / gameBackground.AbsoluteSize.Y), 0)
+	
+				-- Check if the enemy touches the ground
+				if newEnemy.Position.Y.Scale >= 1 then
+					for _, enemy in pairs(gameBackground:GetChildren()) do if enemy.Name == "enemy" then enemy:Destroy() end end
+					scoreLabel.Text = "Game Over!"
+					isGameOver = true
+					button.Visible = true -- Show the button again
+					return
+				end
+	
+				-- Check if the enemy touches lilguy
+				local lilguyBounds = lilguy.AbsolutePosition
+				local lilguySize = lilguy.AbsoluteSize
+				local enemyBounds = newEnemy.AbsolutePosition
+				local enemySize = newEnemy.AbsoluteSize
+	
+				if enemyBounds.X < lilguyBounds.X + lilguySize.X and
+					enemyBounds.X + enemySize.X > lilguyBounds.X and
+					enemyBounds.Y < lilguyBounds.Y + lilguySize.Y and
+					enemyBounds.Y + enemySize.Y > lilguyBounds.Y then
+					-- Lilguy eats the enemy
+					newEnemy:Destroy()
+					score = score + 1
+					sound:Play()
+					scoreLabel.Text = "Score: " .. score
+					return
+				end
+	
+				task.wait(0.01)
+			end
+		end)
+	end
+	
+	-- Function to move lilguy
+	local function moveLilguy()
+		spawn(function()
+			while true do
+				if isFrozen then
+					-- If frozen, stop moving
+					task.wait(0.1)
+					continue
+				end
+	
+				if keys.A then
+					-- Move left
+					lilguy.Position = UDim2.new(
+						math.max(0, lilguy.Position.X.Scale - (moveSpeed / gameBackground.AbsoluteSize.X)),
+						0,
+						lilguy.Position.Y.Scale,
+						0
+					)
+					-- Rotate lilguy slightly to the left
+					lilguy.Rotation = -rotationSpeed
+				elseif keys.D then
+					-- Move right
+					lilguy.Position = UDim2.new(
+						math.min(1, lilguy.Position.X.Scale + (moveSpeed / gameBackground.AbsoluteSize.X)),
+						0,
+						lilguy.Position.Y.Scale,
+						0
+					)
+					-- Rotate lilguy slightly to the right
+					lilguy.Rotation = rotationSpeed
+				else
+					-- Reset rotation when no key is pressed
+					lilguy.Rotation = 0
+				end
+				task.wait(0.01)
+			end
+		end)
+	end
+	
+	-- Detect key presses and releases
+	userInput.InputBegan:Connect(function(input)
+		if isFrozen then return end -- Ignore input if frozen
+	
+		if input.KeyCode == Enum.KeyCode.A then
+			keys.A = true
+		elseif input.KeyCode == Enum.KeyCode.D then
+			keys.D = true
+		end
+	end)
+	
+	userInput.InputEnded:Connect(function(input)
+		if input.KeyCode == Enum.KeyCode.A then
+			keys.A = false
+		elseif input.KeyCode == Enum.KeyCode.D then
+			keys.D = false
+		end
+	end)
+	
+	-- Button press behavior
+	button.MouseButton1Click:Connect(function()
+		-- Hide the button and start the game
+		button.Visible = false
+		isFrozen = false
+		score = 0
+		scoreLabel.Text = "Score: 0"
+		isGameOver = false
+	
+		-- Start spawning enemies
+		spawn(function()
+			while not isGameOver do
+				spawnEnemy()
+				task.wait(spawnInterval)
+			end
+		end)
+	
+		-- Start moving lilguy
+		moveLilguy()
+	end)
+	
+end;
+task.spawn(C_4);
+-- StarterGui.ScreenGui.Arcade.TextButton.LocalScript
+local function C_15()
+local script = G2L["15"];
+	local button = script.Parent
+	local arcade = script.Parent.Parent.Parent.Arcade
+	
+	button.MouseButton1Click:Connect(function ()
+		arcade.Visible = false
+	end)
+end;
+task.spawn(C_15);
+-- StarterGui.ScreenGui.LocalScript
+local function C_16()
+local script = G2L["16"];
+	-- Script to prevent ScreenGui from being destroyed on death
+	local screenGui = script.Parent
+	
+	-- Ensure the ScreenGui is parented to CoreGui for persistence
+	if screenGui:IsA("ScreenGui") and screenGui.Parent ~= game:GetService("CoreGui") then
+		screenGui.Parent = game:GetService("CoreGui")
+	end
+	
+end;
+task.spawn(C_16);
+
+return G2L["1"], require;
