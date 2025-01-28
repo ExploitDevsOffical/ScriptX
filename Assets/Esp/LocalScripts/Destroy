@@ -1,4 +1,4 @@
-local gui = script.Parent.Parent.Parent.Parent
+local gui = game:GetService("CoreGui").ScreenGui
 
 gui:Destroy()
 
