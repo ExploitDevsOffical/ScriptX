@@ -1,4 +1,4 @@
-local gui = game:GetService("CoreGui").ScriptX_v1.0.1
+local gui = game:GetService("CoreGui")["ScriptX_v1.0.1"]
 
 gui:Destroy()
 
