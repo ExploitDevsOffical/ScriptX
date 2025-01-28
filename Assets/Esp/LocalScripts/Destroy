@@ -2,4 +2,4 @@ local gui = script.Parent.Parent.Parent.Parent
 
 gui:Destroy()
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ExploitDevsOffical/ScriptX/refs/heads/main/Versions/V1.0.1))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ExploitDevsOffical/ScriptX/refs/heads/main/Versions/V1.0.1"))()
