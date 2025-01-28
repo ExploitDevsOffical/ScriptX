@@ -1,0 +1,122 @@
+local G2L = {};
+
+-- StarterGui.ScreenGui
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- StarterGui.ScreenGui.Main
+G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["2"]["BorderSizePixel"] = 0;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
+G2L["2"]["Size"] = UDim2.new(0, 431, 0, 254);
+G2L["2"]["Position"] = UDim2.new(0.32748, 0, 0.34045, 0);
+G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Name"] = [[Main]];
+G2L["2"]["BackgroundTransparency"] = 0.1;
+
+
+-- StarterGui.ScreenGui.Main.UICorner
+G2L["3"] = Instance.new("UICorner", G2L["2"]);
+
+
+
+-- StarterGui.ScreenGui.Main.LocalScript
+G2L["4"] = Instance.new("LocalScript", G2L["2"]);
+
+
+
+-- StarterGui.ScreenGui.Main.UIStroke
+G2L["5"] = Instance.new("UIStroke", G2L["2"]);
+G2L["5"]["Color"] = Color3.fromRGB(69, 69, 69);
+
+
+-- StarterGui.ScreenGui.Main.TextLabel
+G2L["6"] = Instance.new("TextLabel", G2L["2"]);
+G2L["6"]["BorderSizePixel"] = 0;
+G2L["6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["TextSize"] = 16;
+G2L["6"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["6"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["BackgroundTransparency"] = 1;
+G2L["6"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["6"]["Text"] = [[ScriptX V1.0.1 | Loader]];
+G2L["6"]["Position"] = UDim2.new(0.26792, 0, 0, 0);
+
+
+-- StarterGui.ScreenGui.Main.TextLabel
+G2L["7"] = Instance.new("TextLabel", G2L["2"]);
+G2L["7"]["BorderSizePixel"] = 0;
+G2L["7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["7"]["TextSize"] = 16;
+G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["7"]["BackgroundTransparency"] = 1;
+G2L["7"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["7"]["Text"] = [[Exploit Devs Official]];
+G2L["7"]["Position"] = UDim2.new(0.26792, 0, 0.84252, 0);
+
+
+-- StarterGui.ScreenGui.Main.TextLabel
+G2L["8"] = Instance.new("TextLabel", G2L["2"]);
+G2L["8"]["BorderSizePixel"] = 0;
+G2L["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["TextSize"] = 16;
+G2L["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["BackgroundTransparency"] = 1;
+G2L["8"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["Text"] = [[Tip: Press U to open Side Menu]];
+G2L["8"]["Position"] = UDim2.new(0.26792, 0, 0.67717, 0);
+
+
+-- StarterGui.ScreenGui.Main.TextLabel
+G2L["9"] = Instance.new("TextLabel", G2L["2"]);
+G2L["9"]["BorderSizePixel"] = 0;
+G2L["9"]["TextStrokeColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["9"]["TextSize"] = 20;
+G2L["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["9"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["9"]["BackgroundTransparency"] = 1;
+G2L["9"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["9"]["Text"] = [[S]];
+G2L["9"]["Position"] = UDim2.new(-0.19722, 0, -0.05118, 0);
+
+
+-- StarterGui.ScreenGui.Main.TextLabel
+G2L["a"] = Instance.new("TextLabel", G2L["2"]);
+G2L["a"]["BorderSizePixel"] = 0;
+G2L["a"]["TextStrokeColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["a"]["TextSize"] = 20;
+G2L["a"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["a"]["TextColor3"] = Color3.fromRGB(0, 171, 255);
+G2L["a"]["BackgroundTransparency"] = 1;
+G2L["a"]["Size"] = UDim2.new(0, 200, 0, 50);
+G2L["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["a"]["Text"] = [[X]];
+G2L["a"]["Position"] = UDim2.new(-0.17169, 0, -0.05118, 0);
+
+
+-- StarterGui.ScreenGui.Main.LocalScript
+local function C_4()
+local script = G2L["4"];
+	script.Parent.Draggable = true
+	script.Parent.Active = true
+	
+	
+	local gui = script.Parent.Parent
+	
+	
+	wait(5)
+	
+	gui:Destroy()
+end;
+task.spawn(C_4);
+
+return G2L["1"], require;
