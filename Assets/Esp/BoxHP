@@ -1,4 +1,4 @@
- local lplr = game.Players.LocalPlayer
+local lplr = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local worldToViewportPoint = camera.WorldToViewportPoint
 
@@ -8,123 +8,125 @@ local LegOff = Vector3.new(0, 3, 0)
 local ESPObjects = {}
 
 local function createBoxEsp(v)
-    if v == lplr then return end  -- Ignore local player
+	if v == lplr then return end
+	local Box = Drawing.new("Square")
+	Box.Visible = false
+	Box.Color = v.TeamColor.Color
+	Box.Thickness = 1.5
+	Box.Transparency = 1
+	Box.Filled = false
 
-    local Box = Drawing.new("Square")
-    Box.Visible = false
-    Box.Color = v.TeamColor.Color
-    Box.Thickness = 1.5
-    Box.Transparency = 1
-    Box.Filled = false
+	local HealthBar = Drawing.new("Line")
+	HealthBar.Visible = false
+	HealthBar.Color = Color3.new(0, 1, 0)
+	HealthBar.Thickness = 2
 
-    local HealthBar = Drawing.new("Line")
-    HealthBar.Visible = false
-    HealthBar.Color = Color3.new(0, 1, 0)
-    HealthBar.Thickness = 2
+	local NameTag = Drawing.new("Text")
+	NameTag.Visible = false
+	NameTag.Color = Color3.new(1, 1, 1)
+	NameTag.Size = 14
+	NameTag.Center = true
+	NameTag.Outline = true
+	NameTag.OutlineColor = Color3.new(0, 0, 0)
 
-    local NameTag = Drawing.new("Text")
-    NameTag.Visible = false
-    NameTag.Color = Color3.new(1, 1, 1)
-    NameTag.Size = 14
-    NameTag.Center = true
-    NameTag.Outline = true
-    NameTag.OutlineColor = Color3.new(0, 0, 0)
+	local DistanceTag = Drawing.new("Text")
+	DistanceTag.Visible = false
+	DistanceTag.Color = Color3.new(1, 1, 1)
+	DistanceTag.Size = 14
+	DistanceTag.Center = true
+	DistanceTag.Outline = true
+	DistanceTag.OutlineColor = Color3.new(0, 0, 0)
 
-    local DistanceTag = Drawing.new("Text")
-    DistanceTag.Visible = false
-    DistanceTag.Color = Color3.new(1, 1, 1)
-    DistanceTag.Size = 14
-    DistanceTag.Center = true
-    DistanceTag.Outline = true
-    DistanceTag.OutlineColor = Color3.new(0, 0, 0)
+	local Tracer = Drawing.new("Line")
+	Tracer.Visible = false
+	Tracer.Color = v.TeamColor.Color
+	Tracer.Thickness = 1
 
-    local Tracer = Drawing.new("Line")
-    Tracer.Visible = false
-    Tracer.Color = v.TeamColor.Color
-    Tracer.Thickness = 1
-
-    ESPObjects[v] = { Box = Box, HealthBar = HealthBar, NameTag = NameTag, DistanceTag = DistanceTag, Tracer = Tracer }
+	ESPObjects[v] = {
+		Box = Box,
+		HealthBar = HealthBar,
+		NameTag = NameTag,
+		DistanceTag = DistanceTag,
+		Tracer = Tracer
+	}
 end
 
 local function removeESP(v)
-    if ESPObjects[v] then
-        for _, obj in pairs(ESPObjects[v]) do
-            obj:Remove()
-        end
-        ESPObjects[v] = nil
-    end
+	local objs = ESPObjects[v]
+	if objs then
+		for _, obj in pairs(objs) do
+			obj:Remove()
+		end
+		ESPObjects[v] = nil
+	end
 end
 
--- Create ESP for existing players
-for _, v in pairs(game.Players:GetPlayers()) do
-    createBoxEsp(v)
+for _, v in ipairs(game.Players:GetPlayers()) do
+	createBoxEsp(v)
 end
 
--- Update ESP efficiently
 game:GetService("RunService").RenderStepped:Connect(function()
-    for v, esp in pairs(ESPObjects) do
-        if v and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("HumanoidRootPart") and v.Character.Humanoid.Health > 0 then
-            local RootPart = v.Character.HumanoidRootPart
-            local Head = v.Character:FindFirstChild("Head")
-            
-            local RootPosition, onScreen = worldToViewportPoint(camera, RootPart.Position)
-            local HeadPosition = worldToViewportPoint(camera, Head.Position + HeadOff)
-            local LegPosition = worldToViewportPoint(camera, RootPart.Position - LegOff)
+	for v, esp in pairs(ESPObjects) do
+		local char = v.Character
+		if char and char:FindFirstChild("Humanoid") and char:FindFirstChild("HumanoidRootPart") and char.Humanoid.Health > 0 then
+			local root = char.HumanoidRootPart
+			local head = char:FindFirstChild("Head")
+			if not head then continue end
 
-            local BoxSize = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
-            local BoxPosition = Vector2.new(RootPosition.X - BoxSize.X / 2, RootPosition.Y - BoxSize.Y / 2)
+			local rootPos, onScreen = worldToViewportPoint(camera, root.Position)
+			if not onScreen then
+				for _, obj in pairs(esp) do obj.Visible = false end
+				continue
+			end
 
-            esp.Box.Size = BoxSize
-            esp.Box.Position = BoxPosition
-            esp.Box.Color = v.TeamColor.Color
+			local headPos = worldToViewportPoint(camera, head.Position + HeadOff)
+			local legPos = worldToViewportPoint(camera, root.Position - LegOff)
 
-            -- Health Bar
-            local health = v.Character.Humanoid.Health / v.Character.Humanoid.MaxHealth
-            esp.HealthBar.From = Vector2.new(BoxPosition.X + BoxSize.X + 5, BoxPosition.Y + BoxSize.Y * (1 - health))
-            esp.HealthBar.To = Vector2.new(BoxPosition.X + BoxSize.X + 5, BoxPosition.Y + BoxSize.Y)
-            esp.HealthBar.Color = Color3.new(1 - health, health, 0)
+			local boxHeight = headPos.Y - legPos.Y
+			local boxWidth = 1000 / rootPos.Z
+			local boxPos = Vector2.new(rootPos.X - boxWidth / 2, rootPos.Y - boxHeight / 2)
 
-            -- NameTag
-            esp.NameTag.Position = Vector2.new(BoxPosition.X + BoxSize.X / 2, BoxPosition.Y - 20)
-            esp.NameTag.Text = v.Name
+			-- Box
+			esp.Box.Size = Vector2.new(boxWidth, boxHeight)
+			esp.Box.Position = boxPos
+			esp.Box.Color = v.TeamColor.Color
+			esp.Box.Visible = true
 
-            -- Distance Tag
-            esp.DistanceTag.Position = Vector2.new(BoxPosition.X + BoxSize.X / 2, BoxPosition.Y + BoxSize.Y)
-            esp.DistanceTag.Text = tostring(math.floor((lplr.Character.HumanoidRootPart.Position - RootPart.Position).Magnitude)) .. "m"
+			-- Health Bar
+			local health = char.Humanoid.Health / char.Humanoid.MaxHealth
+			local hbX = boxPos.X + boxWidth + 5
+			local hbY1 = boxPos.Y + boxHeight * (1 - health)
+			local hbY2 = boxPos.Y + boxHeight
+			esp.HealthBar.From = Vector2.new(hbX, hbY1)
+			esp.HealthBar.To = Vector2.new(hbX, hbY2)
+			esp.HealthBar.Color = Color3.new(1 - health, health, 0)
+			esp.HealthBar.Visible = true
 
-            -- Tracer
-            local lplrHead = lplr.Character and lplr.Character:FindFirstChild("Head")
-            if lplrHead then
-                local lplrHeadViewport = worldToViewportPoint(camera, lplrHead.Position)
-                esp.Tracer.From = Vector2.new(lplrHeadViewport.X, lplrHeadViewport.Y)
-                esp.Tracer.To = Vector2.new(RootPosition.X, RootPosition.Y)
-            end
+			-- Name Tag
+			esp.NameTag.Position = Vector2.new(boxPos.X + boxWidth / 2, boxPos.Y - 20)
+			esp.NameTag.Text = v.Name
+			esp.NameTag.Visible = false
 
-            -- Toggle visibility
-            if onScreen then
-                esp.Box.Visible = true
-                esp.HealthBar.Visible = true
-                esp.NameTag.Visible = false
-                esp.DistanceTag.Visible = false
-                esp.Tracer.Visible = false
-            else
-                esp.Box.Visible = false
-                esp.HealthBar.Visible = false
-                esp.NameTag.Visible = false
-                esp.DistanceTag.Visible = false
-                esp.Tracer.Visible = false
-            end
-        else
-            -- Hide if player is invalid
-            esp.Box.Visible = false
-            esp.HealthBar.Visible = false
-            esp.NameTag.Visible = false
-            esp.DistanceTag.Visible = false
-            esp.Tracer.Visible = false
-        end
-    end
+			-- Distance
+			local dist = math.floor((lplr.Character.HumanoidRootPart.Position - root.Position).Magnitude)
+			esp.DistanceTag.Position = Vector2.new(boxPos.X + boxWidth / 2, boxPos.Y + boxHeight)
+			esp.DistanceTag.Text = dist .. "m"
+			esp.DistanceTag.Visible = false
+
+			-- Tracer
+			local lplrHead = lplr.Character and lplr.Character:FindFirstChild("Head")
+			if lplrHead then
+				local fromPos = worldToViewportPoint(camera, lplrHead.Position)
+				esp.Tracer.From = Vector2.new(fromPos.X, fromPos.Y)
+				esp.Tracer.To = Vector2.new(rootPos.X, rootPos.Y)
+			end
+			esp.Tracer.Visible = false
+		else
+			for _, obj in pairs(esp) do obj.Visible = false end
+		end
+	end
 end)
 
--- Handle new players
 game.Players.PlayerAdded:Connect(createBoxEsp)
 game.Players.PlayerRemoving:Connect(removeESP)
+
